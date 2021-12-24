@@ -2,7 +2,7 @@ extends Control
 
 export var text_speed = 5
 export var next_text = 0
-# Comment
+
 func _ready():
 	$Texts/End.text = "Next>"
 
