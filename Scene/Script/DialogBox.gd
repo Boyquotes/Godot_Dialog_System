@@ -8,7 +8,7 @@ func _ready():
 
 func _physics_process(delta):
 	SetName("Actor")
-	WriteLine("Hi Hello","This is good dialog box", "easy to write", "not hard")
+	WriteLine("Hi Hello","This is good dialog box", "easy to write", "not hard at all")
 
 func SetName(Name):
 	$Texts/Name.text = Name
