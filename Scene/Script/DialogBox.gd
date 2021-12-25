@@ -1,14 +1,14 @@
 extends Control
 
-export var text_speed = 5
+export var text_speed = 0.05
 export var next_text = 0
 
 func _ready():
-	$Texts/End.text = "Next>"
+	$Texts/End.text = " "
 
 func _physics_process(delta):
-	SetName("Actor")
-	WriteLine("Hi Hello","This is good dialog box", "easy to write", "not hard at all")
+	if $Texts/Text.visible_characters == len($Texts/Text.text):
+		$Texts/End.text = "Next>"
 
 func SetName(Name):
 	$Texts/Name.text = Name
@@ -23,18 +23,20 @@ func WriteLine(text1, text2, text3, text4):
 	if Input.is_action_just_pressed("ui_accept"):
 		next_text += 1
 		$Texts/Text.visible_characters = 0
+		$Texts/End.text = " "
 	match next_text:
-		0:
-			$Texts/Text.text = text1
 		1:
 			AnimationText()
-			$Texts/Text.text = text2
+			$Texts/Text.text = text1
 		2:
 			AnimationText()
-			$Texts/Text.text = text3
+			$Texts/Text.text = text2
 		3:
 			AnimationText()
-			$Texts/Text.text = text4
+			$Texts/Text.text = text3
 		4:
+			AnimationText()
+			$Texts/Text.text = text4
+		5:
 			hide()
 			next_text = 0
