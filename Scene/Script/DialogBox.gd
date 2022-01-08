@@ -22,7 +22,7 @@ func AnimationText():
 func WriteLine(text1, text2, text3, text4):
 	if $Texts/Text.visible_characters == len($Texts/Text.text):
 		$Texts/End.text = "Next>"
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") && finished == false:
 		next_text += 1
 		$Texts/Text.visible_characters = 0
 		$Texts/End.text = ""
@@ -41,4 +41,5 @@ func WriteLine(text1, text2, text3, text4):
 			$Texts/Text.text = text4
 		4:
 			hide()
+			finished = true
 			next_text = 0
